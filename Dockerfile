@@ -21,4 +21,4 @@ ADD firstrun.sh /etc/my_init.d/firstrun.sh
 RUN chmod +x /etc/default/boinc-client && \
 apt-get install -q -y -o Dpkg::Options::="--force-confold" boinc-client boinc-manager && \
 mkdir -p /root/boinc && \
-echo lxsession -s LXDE -e LXDE > /root/boinc/.xsession && \
+echo lxsession -s LXDE -e LXDE > /root/boinc/.xsession
