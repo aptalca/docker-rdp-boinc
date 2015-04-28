@@ -15,11 +15,12 @@ wget \
 lxde \
 xrdp
 
-ADD boinc-client /etc/default/boinc-client
+
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
 
-RUN chmod +x /etc/default/boinc-client && \
-chmod +x /etc/my_init.d/firstrun.sh && \
-apt-get install -q -y -o Dpkg::Options::="--force-confold" boinc-client boinc-manager && \
+RUN chmod +x /etc/my_init.d/firstrun.sh && \
 mkdir -p /root/boinc && \
-echo lxsession -s LXDE -e LXDE > /root/boinc/.xsession
+cd /root/boinc && \
+wget boinc_7.2.42_x86_64-pc-linux-gnu.sh && \
+chmod +x /root/boinc/boinc_7.2.42_x86_64-pc-linux-gnu.sh && \
+echo lxsession -s LXDE -e LXDE > /root/.xsession
