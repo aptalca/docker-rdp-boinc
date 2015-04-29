@@ -1,20 +1,10 @@
-FROM phusion/baseimage:0.9.11
+FROM aptalca/docker-rdp-base
 
 MAINTAINER aptalca
 
 VOLUME ["/config"]
 
 EXPOSE 3389
-
-RUN echo $TZ > /etc/timezone && \
-export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
-dpkg-reconfigure tzdata && \
-apt-get update && \
-apt-get install -y \
-wget \
-lxde \
-xrdp
-
 
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
 
