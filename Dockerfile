@@ -7,6 +7,8 @@ VOLUME ["/config"]
 EXPOSE 3389
 
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
+RUN mkdir -p /root/Desktop
+ADD boinc.desktop /root/Desktop/boinc.desktop
 
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 apt-get install -y libwxgtk2.8-dev && \
