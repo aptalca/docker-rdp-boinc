@@ -1,19 +1,8 @@
 #!/bin/bash
 
-# Set the correct local time
-echo $TZ > /etc/timezone
-export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
-dpkg-reconfigure tzdata
-
 # Install boinc client and manager
-cp /root/boinc/boinc_7.2.42_x86_64-pc-linux-gnu.sh /config/boinc_7.2.42_x86_64-pc-linux-gnu.sh
+cp /nobody/boinc/boinc_7.2.42_x86_64-pc-linux-gnu.sh /config/boinc_7.2.42_x86_64-pc-linux-gnu.sh
 chmod +x /config/boinc_7.2.42_x86_64-pc-linux-gnu.sh
-cd /config
-./boinc_7.2.42_x86_64-pc-linux-gnu.sh
-chmod -R +rw /config/BOINC
-
-# Set root password for RDP
-echo -e "boinc\nboinc" | passwd root
-
-service xrdp restart
-/config/BOINC/run_client --daemon
+chown -R nobody:users /config
+su -c "cd /config && ./boinc_7.2.42_x86_64-pc-linux-gnu.sh" -s /bin/sh nobody
+su -c "/config/BOINC/run_client --daemon" -s /bin/sh nobody

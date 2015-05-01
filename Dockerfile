@@ -1,19 +1,22 @@
-FROM aptalca/docker-rdp-base
+FROM aptalca/docker-webrdp-base
 
 MAINTAINER aptalca
 
 VOLUME ["/config"]
 
-EXPOSE 3389
+EXPOSE 3389 8080
 
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
-RUN mkdir -p /root/Desktop
-ADD boinc.desktop /root/Desktop/boinc.desktop
+ADD autostart /nobody/.config/openbox/autostart
 
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
-apt-get install -y libwxgtk2.8-dev && \
+apt-get update && \
+apt-get install -y \
+libnotify4 \
+libwxgtk2.8-dev \
+libxss1 && \
 chmod +x /etc/my_init.d/firstrun.sh && \
-mkdir -p /root/boinc && \
-cd /root/boinc && \
-wget http://boinc.berkeley.edu/dl/boinc_7.2.42_x86_64-pc-linux-gnu.sh && \
-echo lxsession -s LXDE -e LXDE > /root/.xsession
+chown nobody:users /nobody/.config/openbox/autostart && \
+mkdir -p /nobody/boinc && \
+cd /nobody/boinc && \
+wget http://boinc.berkeley.edu/dl/boinc_7.2.42_x86_64-pc-linux-gnu.sh
