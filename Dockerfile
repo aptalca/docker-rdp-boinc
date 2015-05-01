@@ -10,7 +10,6 @@ ADD firstrun.sh /etc/my_init.d/firstrun.sh
 ADD autostart /nobody/.config/openbox/autostart
 
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
-apt-get install -y libwxgtk2.8-dev && \
 chmod +x /etc/my_init.d/firstrun.sh && \
 mkdir -p /nobody/boinc && \
 cd /nobody/boinc && \
