@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Name=BOINC Manager
-Name[en_US]=BOINC Manager
-Exec=/config/BOINC/run_manager
-Comment[en_US]=BOINC Manager
-StartupNotify=true
