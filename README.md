@@ -2,7 +2,7 @@
 
 BOINC manager and client for unRaid
 
-BOINC lets you contribute computing power on your home PC to projects doing research in many scientific areas. You can contribute to a single project, or to any combination of them. RDP-Boinc is a docker for the BOINC manager and client that can be accessed through RDP.
+BOINC lets you contribute computing power on your home PC to projects doing research in many scientific areas. You can contribute to a single project, or to any combination of them. RDP-Boinc is a docker for the BOINC manager and client that can be accessed through a web based ui.
 
 Installation:
 
