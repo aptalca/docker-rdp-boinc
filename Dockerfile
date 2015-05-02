@@ -15,7 +15,7 @@ ENV USER_ID=99
 ENV GROUP_ID=100
 
 # Gui App Name default is "GUI_APPLICATION"
-ENV APP_NAME="Boinc"
+ENV APP_NAME="GUI_APPLICATION"
 
 # Default resolution, change if you like
 ENV WIDTH=1280
